@@ -1,0 +1,68 @@
+<p>Name: American FoxhoundDiet: Omnivore
+Location: North-America
+Type: Hound
+
+Name: Arctic FoxDiet: Carnivore
+Location: Eurasia
+Type: Mammal
+
+Name: Cross FoxDiet: Carnivore
+Location: North-America
+Type: mammal
+
+Name: Darwin’s foxDiet: Omnivore
+Location: South-America
+Type: Mammal
+
+Name: English FoxhoundDiet: Omnivore
+Location: Europe
+
+Name: Fennec FoxDiet: Omnivore
+Location: Africa
+
+Name: FoxDiet: Carnivore
+Location: Africa
+Type: Mammal
+
+Name: Fox SnakesDiet: Carnivore
+Location: North-America
+
+Name: Fox SquirrelDiet: Omnivore
+Location: Central-America
+Type: rodent
+
+Name: Fox TerrierDiet: Omnivore
+Location: Europe
+
+Name: Golden-Crowned Flying FoxDiet: Herbivore
+Location: Asia
+
+Name: Gray FoxDiet: Omnivore
+Location: Central-America
+Type: Mammal
+
+Name: Kit FoxDiet: Omnivore
+Location: Central-America
+Type: mammal
+
+Name: Marble FoxDiet: Omnivore
+Location: North-America
+Type: Mammal
+
+Name: Red FoxDiet: Omnivore
+Location: Africa
+
+Name: Smooth Fox TerrierDiet: Omnivore
+Location: Europe
+
+Name: Tibetan FoxDiet: Carnivore
+Location: Asia
+Type: Mammal
+
+Name: Toy Fox TerrierDiet: Omnivore
+Location: North-America
+
+Name: Wire Fox TerrierDiet: Omnivore
+Location: Europe
+
+</p>
