@@ -28,7 +28,11 @@ def get_animal_info_cards(data):
         diet = animal['characteristics'].get('diet')
         location = animal['locations'][0]
         type_maybe = animal['characteristics'].get('type')
+
         animal_object = [name, diet, location, type_maybe]
+        # felt very tempted of making a class Animal
+        # but that isn't what this assignment asks
+
         serialized_animal_objects += serialize_animal_info(animal_object)
 
     return serialized_animal_objects
@@ -42,11 +46,13 @@ def serialize_animal_info(animal_object):
     animal_card += (f"<li class='cards__item'>\n"
                     f"\t\t\t\t<div class='card__title'>{animal_object[0]}</div>\n"
                     f"\t\t\t\t<p class='card__text'>\n"
-                    f"\t\t\t\t\t<strong>Diet:</strong> {animal_object[1]}<br/>\n"
-                    f"\t\t\t\t\t<strong>Location:</strong> {animal_object[2]}<br/>\n")
+                    f"\t\t\t\t\t<ul class='card__text'>\n"
+                    f"\t\t\t\t\t\t<li class='card'><strong>Diet:</strong> {animal_object[1]}</li>\n"
+                    f"\t\t\t\t\t\t<li class='card'><strong>Location:</strong> {animal_object[2]}</li>\n")
     if animal_object[3] is not None:
-        animal_card += f"\t\t\t\t\t<strong>Type:</strong> {animal_object[3]}<br/>\n"
-    animal_card += (f"\t\t\t\t<p>\n"
+        animal_card += f"\t\t\t\t\t\t<li class='card'><strong>Type:</strong> {animal_object[3]}</li>\n"
+    animal_card += (f"\t\t\t\t\t</ul>\n"
+                    f"\t\t\t\t<p>\n"
                     f"\t\t\t</li>\n"
                     f"\t\t\t")
 
