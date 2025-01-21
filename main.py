@@ -1,49 +1,55 @@
 import json
 
-def replace_animals_info_html(old_string, html_file, txt_file):
+def replace_animals_info_html(old_string, html_template, new_html_file_name, txt_file):
     """
-    Creates a new html file by copying a template, and modifying its contents
-    with text from a txt file.
+    Reads a html template and a txt, replaces a string from the template
+    (old_string) with the contents from the txt
+    Returns/overwrites a new html file with the changes
     """
     with open(txt_file, "r") as handle:
         replacement_text = handle.read()
 
-    with open(html_file, "r") as handle:
+    with open(html_template, "r") as handle:
         html_content = handle.read()
 
-    replacement_text = replacement_text
-    new_html_content = html_content.replace(old_string, replacement_text)
+    new_html_file = html_content.replace(old_string, replacement_text)
 
-    with open("animals_template.html", 'w') as handle:
-        handle.write(new_html_content)
+    with open(new_html_file_name, 'w') as handle:
+        handle.write(new_html_file)
 
 
 def write_animals_data(string):
     """
-    Writes a string into a .txt file
+    Writes a html formated string and
+    returns it as a txt file
     """
     with open("replacement_text.txt", "w") as file:
-        file.write("<p>" + string + "</p>")
+        file.write(string)
 
 
-def get_print_animal_info(data):
+def get_animal_info_cards(data):
     """
-   From a list of dictionaries, gets certain values,
-   and prints a formated string for each dictionary.
+   From a list of dictionaries, gets certain non-None values
+   Returns a html formated string for each dictionary (each as a card)
    """
-    animals_string = ""
+    output = ""
     for animal in data:
         name = animal['name']
         diet = animal['characteristics'].get('diet')
         location = animal['locations'][0]
         type = animal['characteristics'].get('type')
 
-        animals_string += f"Name: {name}Diet: {diet}\nLocation: {location}\n"
-        if type is not None:
-            animals_string += f"Type: {type}\n"
-        animals_string += "\n"
+        #animals_string += f"Name: {name}\nDiet: {diet}\nLocation: {location}\n"
+        #if type is not None:
+        #    animals_string += f"Type: {type}\n"
+        #animals_string += "\n"
 
-    return animals_string
+        output += f"<li class='cards__item'>Name: {name}<br/>\nDiet: {diet}<br/>\nLocation: {location}<br/>\n"
+        if type is not None:
+            output += f"Type: {type}<br/>\n"
+        output += "</li>\n"
+
+    return output
 
 
 def load_animal_data(file_path):
@@ -55,11 +61,12 @@ def load_animal_data(file_path):
 
 
 def main():
-    ANIMALS_DATA = load_animal_data('animals_data.json')
-    animals_info = get_print_animal_info(ANIMALS_DATA)
-    write_animals_data(animals_info)
-    string_to_be_replaced = "__REPLACE_ANIMALS_INFO__" #I'll hardcode it for now
-    replace_animals_info_html(string_to_be_replaced, "old_animals_template.html", "replacement_text.txt")
+    ANIMALS_DATA = load_animal_data('animals_data.json') # as a list of dictionaries
+    animals_info_cards = get_animal_info_cards(ANIMALS_DATA)
+    write_animals_data(animals_info_cards)
+    string_to_be_replaced = "__REPLACE_ANIMALS_INFO__" # it would be better as user input but hardcoded it is
+    new_html_file_name = "animals.html" # as a variable in main in case I need to change the name again
+    replace_animals_info_html(string_to_be_replaced, "animals_template.html", new_html_file_name,"replacement_text.txt")
 
 
 if __name__ == "__main__":
