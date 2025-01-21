@@ -32,24 +32,25 @@ def get_animal_info_cards(data):
    From a list of dictionaries, gets certain non-None values
    Returns a html formated string for each dictionary (each as a card)
    """
-    output = ""
+    animal_cards = ""
     for animal in data:
         name = animal['name']
         diet = animal['characteristics'].get('diet')
         location = animal['locations'][0]
-        type = animal['characteristics'].get('type')
+        type_maybe = animal['characteristics'].get('type')
 
-        #animals_string += f"Name: {name}\nDiet: {diet}\nLocation: {location}\n"
-        #if type is not None:
-        #    animals_string += f"Type: {type}\n"
-        #animals_string += "\n"
+        animal_cards += (f"<li class='cards__item'>\n"
+                   f"\t\t\t\t<div class='card__title'>{name}</div>\n"
+                   f"\t\t\t\t<p class='card__text'>\n"
+                   f"\t\t\t\t\t<strong>Diet:</strong> {diet}<br/>\n"
+                   f"\t\t\t\t\t<strong>Location:</strong> {location}<br/>\n")
+        if type_maybe is not None:
+            animal_cards += f"\t\t\t\t\t<strong>Type:</strong> {type_maybe}<br/>\n"
+        animal_cards += (f"\t\t\t\t<p>\n"
+                         f"\t\t\t</li>\n"
+                         f"\t\t\t")
 
-        output += f"<li class='cards__item'>Name: {name}<br/>\nDiet: {diet}<br/>\nLocation: {location}<br/>\n"
-        if type is not None:
-            output += f"Type: {type}<br/>\n"
-        output += "</li>\n"
-
-    return output
+    return animal_cards[:-4]
 
 
 def load_animal_data(file_path):
@@ -61,12 +62,13 @@ def load_animal_data(file_path):
 
 
 def main():
-    ANIMALS_DATA = load_animal_data('animals_data.json') # as a list of dictionaries
-    animals_info_cards = get_animal_info_cards(ANIMALS_DATA)
-    write_animals_data(animals_info_cards)
+    animals_data = load_animal_data('animals_data.json') # as a list of dictionaries
+    animals_info_cards = get_animal_info_cards(animals_data)
+    write_animals_data(animals_info_cards) #added an extra just  because
     string_to_be_replaced = "__REPLACE_ANIMALS_INFO__" # it would be better as user input but hardcoded it is
     new_html_file_name = "animals.html" # as a variable in main in case I need to change the name again
-    replace_animals_info_html(string_to_be_replaced, "animals_template.html", new_html_file_name,"replacement_text.txt")
+    replace_animals_info_html(string_to_be_replaced, "animals_template.html",
+                              new_html_file_name,"replacement_text.txt")
 
 
 if __name__ == "__main__":
