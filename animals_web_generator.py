@@ -1,4 +1,8 @@
 import json
+import requests
+
+
+URL = "https://api.api-ninjas.com/v1/animals?name=fox"
 
 
 def replace_animals_info_html(old_string, html_template, new_html_file_name, new_string):
@@ -43,18 +47,18 @@ def serialize_animal_info(animal_object):
     Serializes and returns an animal card from an animal object
     """
     animal_card = ""
-    animal_card += (f"<li class='cards__item'>\n"
+    animal_card += ("<li class='cards__item'>\n"
                     f"\t\t\t\t<div class='card__title'>{animal_object[0]}</div>\n"
-                    f"\t\t\t\t<p class='card__text'>\n"
-                    f"\t\t\t\t\t<ul class='card__text'>\n"
+                    "\t\t\t\t<p class='card__text'>\n"
+                    "\t\t\t\t\t<ul class='card__text'>\n"
                     f"\t\t\t\t\t\t<li class='card'><strong>Diet:</strong> {animal_object[1]}</li>\n"
                     f"\t\t\t\t\t\t<li class='card'><strong>Location:</strong> {animal_object[2]}</li>\n")
     if animal_object[3] is not None:
         animal_card += f"\t\t\t\t\t\t<li class='card'><strong>Type:</strong> {animal_object[3]}</li>\n"
-    animal_card += (f"\t\t\t\t\t</ul>\n"
-                    f"\t\t\t\t<p>\n"
-                    f"\t\t\t</li>\n"
-                    f"\t\t\t")
+    animal_card += ("\t\t\t\t\t</ul>\n"
+                    "\t\t\t\t<p>\n"
+                    "\t\t\t</li>\n"
+                    "\t\t\t")
 
     return animal_card
 
@@ -63,8 +67,8 @@ def load_animal_data(file_path):
     """
     Loads a JSON file
     """
-    with open(file_path, "r") as handle:
-        return json.load(handle)
+    with open(requests.get(URL).json(), "w") as handle:
+        handle.write(file_path)
 
 
 def main():
