@@ -1,6 +1,8 @@
 import requests as req
+import os
+import json
 
-API_KEY = "EkSx4EPXqiNAe66ThCUTIA==dfkB4vAdUW4fXv03"
+API_KEY = os.environ.get("API_KEY")
 
 URL = "https://api.api-ninjas.com/v1/animals?name=dog"
 
@@ -26,7 +28,7 @@ def save_json_file():
 
 def main():
     animal_json = check_query_status()
-    save_json_file(animal_json)
+    #save_json_file(animal_json)
 
 if __name__ == "__main__":
     main()
