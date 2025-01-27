@@ -1,4 +1,5 @@
 import json
+import load_json
 
 
 def replace_animals_info_html(old_string, html_template, new_html_file_name, new_string):
@@ -68,6 +69,7 @@ def load_animal_data(file_path):
 
 
 def main():
+    load_json.fetch_json_file()
     animals_data = load_animal_data("animal.json") # as a list of dictionaries
     new_string = get_animal_info_cards(animals_data)
     string_to_be_replaced = "__REPLACE_ANIMALS_INFO__" # it would be better as user input but hardcoded it is

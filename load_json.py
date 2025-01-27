@@ -2,10 +2,10 @@ import requests as req
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
 
-#API_KEY = os.environ.get("my_api_key")
-API_KEY = "EkSx4EPXqiNAe66ThCUTIA==dfkB4vAdUW4fXv03"
+API_KEY = os.environ.get("my_api_key")
 
 URL = "https://api.api-ninjas.com/v1/animals"
 
@@ -17,6 +17,7 @@ def get_animal_info():
     """
     headers = {"X-Api-Key" : API_KEY}
     payload = {"name": input("What animal would you like to inquire about? ")}
+    # make this input in the main script later
 
     animal_query = req.get(URL, payload).url
     response = req.get(animal_query, headers=headers)
@@ -39,11 +40,8 @@ def save_json_file(json_obj):
         handle.write(json_obj)
 
 
-def main():
+def fetch_json_file():  # change name duh
     animal_json = get_animal_info()
     #print(animal_json)
     check_input(animal_json)
     save_json_file(animal_json)
-
-if __name__ == "__main__":
-    main()
