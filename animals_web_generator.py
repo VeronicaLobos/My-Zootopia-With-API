@@ -1,8 +1,5 @@
 import json
-from logging import raiseExceptions
-from operator import is_not
-
-import load_json
+import data_fetcher
 
 
 def replace_animals_info_html(old_string, html_template, new_html_file_name, new_string):
@@ -104,7 +101,7 @@ def main():
     string_to_be_replaced = "__REPLACE_ANIMALS_INFO__"
 
     animal_name = get_user_input()  # Milestone 2
-    load_json.fetch_json_file(animal_name)  # Milestone 1
+    data_fetcher.fetch_json_file(animal_name)  # Milestone 1
     animals_data = load_animal_data("animal.json")
 
     if len(animals_data) > 2:
