@@ -31,8 +31,6 @@ def get_animal_info_cards(data):
         type_maybe = animal['characteristics'].get('type')
 
         animal_object = [name, diet, location, type_maybe]
-        # felt very tempted of making a class Animal
-        # but that isn't what this assignment asks
 
         serialized_animal_objects += serialize_animal_info(animal_object)
 
@@ -69,18 +67,18 @@ def load_animal_data(file_path):
 
 
 def get_user_input():
-  """
-  Gets user input, checks that the user didn't input an empty string,
-  in which case will prompt the user to return a valid input.
-  Returns  a string.
-  """
-  while True:
-    user_input = input("What animal name would you like to search for? ")
-    if len(user_input) > 0:
-        return user_input
-    else:
-        print("Please, enter a valid input before pressing return.")
-        continue
+    """
+    Gets user input, checks that the user didn't input an empty string,
+    in which case will prompt the user to return a valid input.
+    Returns  a string.
+    """
+    while True:
+        user_input = input("What animal name would you like to search for? ")
+        if len(user_input) > 0:
+            return user_input
+        else:
+            print("Please, enter a valid input before pressing return.")
+            continue
 
 
 def main():
@@ -95,8 +93,6 @@ def main():
     Otherwise:
     6. Generates a "not found" html file, by replacing the text
         with a header indicating the non-existing input
-
-    :return:
     """
     string_to_be_replaced = "__REPLACE_ANIMALS_INFO__"
 
