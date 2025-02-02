@@ -5,7 +5,8 @@ import os
 
 load_dotenv()
 
-API_KEY = os.environ.get("my_api_key")
+### API_KEY = os.environ.get("my_api_key")
+API_KEY = os.getenv("my_api_key")
 
 URL = "https://api.api-ninjas.com/v1/animals"
 
