@@ -1,10 +1,10 @@
 # My Zootopia with API Project
 
-This program generates a simple html file with info extracted from and API:
+This program generates a simple html file with info extracted from an API:
 
-1. Requests user input to retrieve the name of an animal
-2. Makes a request to Animals API with said input and saves it to a json file
-3. Extracts certain information from the json file, parses it into html cards, and inserts them into a html template in order to generate a new one
+1. Aks user input to retrieve the name of an animal
+2. Makes a request to Animals API with said input and saves it to a JSON file
+3. Extracts certain information from the JSON file, parses it into HTML cards, and inserts them into an HTML template to generate a new one
 
 Check out the example generated for "Fox"
 
@@ -22,7 +22,7 @@ To use this project:
 
 ## Contributing
 
-You are welcome to use and or modify this project, this was a graded project I made during my bootcamp, I hope it inspires you too to learn more about front end development with python!
+You are welcome to use and or modify this project, this was a graded project I made during the Bootcamp I am enrolled in. I hope it inspires you too to learn more about front-end development with Python!
 
 ![fox_web_preview](https://github.com/user-attachments/assets/6aad9e52-93df-4fbe-88ed-276cbd460e93)
 
